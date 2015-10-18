@@ -1,0 +1,106 @@
+extends layout
+
+block content
+  //Navbar
+  nav.navbar.navbar-default.custom-color(role='navigation')
+    div.nav-container
+      div.navbar-header
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-brand-centered')
+          span.glyphicon.glyphicon-th-list
+        div.navbar-brand-centered
+          a.navbar-brand(href='#') Главная
+      div.collapse.navbar-collapse(id='navbar-brand-centered', style='padding-left: 0px;')
+        ul.nav.navbar-nav
+          li
+            a(href='#') Link1
+          li
+            a(href='#') Link2
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href='#') Link3
+          li
+            a(href='#') Link4
+          li
+            a(href='#') Link5
+          li
+            a(href='#') Link6
+
+  //Slider
+  div.carousel.slide(id='Slider', data-ride='carousel')
+    ol.carousel-indicators
+      li.active(data-target='#Slider', data-slide-to='0')
+      li(data-target='#Slider', data-slide-to='1')
+      li(data-target='#Slider', data-slide-to='2')
+      li(data-target='#Slider', data-slide-to='3')
+    div.carousel-inner(role='listbox')
+      div.item.active
+        div.text-center
+          img(src='http://image.zn.ua/media/images/original/Jun2015/119141.jpg')
+      div.item
+        div.text-center
+          img(src='http://comandir.com/upkeep/uploads/2015/07/2-e1436755811315.jpg')
+      div.item
+        div.text-center
+         img(src='http://www.kris-dostavka.narod.ru/doc_BBC_Discovery_/sverh_bleck_holl_b.jpg')
+      div.item
+        div.text-center
+         img(src='http://wpapers.ru/wallpapers/Space/10683/PREV_%D0%A7%D0%B5%D1%80%D0%BD%D0%B0%D1%8F-%D0%B4%D1%8B%D1%80%D0%B0.jpg')
+    a.left.carousel-control(href='#Slider', role='button', data-slide='prev')
+      span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+      span.sr-only Back
+    a.right.carousel-control(href='#Slider', role='button', data-slide='next')
+      span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+      span.sr-only Next
+
+  //Forms
+  div.row
+    div.col-md-7
+      div.panel.panel-default
+        div.panel-heading.text-center Форма покупки
+        div.panel-body
+          div.container-fluid
+            div.row
+              div.col-md-8
+                form.form-horizontal
+                  div.form-group
+                    label.control-label.col-md-4 Продукт:
+                    div.dropdown.col-md-8
+                      button.btn.btn-default.dropdown-toggle(type='button', id='dropdown.productName', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true')
+                        //strong(data-bind='text: productName')
+                        span(data-bind='text: productName') Выберите товар ...
+                        span.caret
+                      ul.dropdown-menu(aria-labelledby='dropdown.productName') Выберите товар ...
+                        li
+                          a(href='#', data-bind='click: choosingDarkmatter') Тёмная материя
+                        li
+                          a(href='#', data-bind='click: choosingSingularity') Сингулярность концентрированная
+                        li
+                          a(href='#', data-bind='click: choosingExtract') Базоновый экстракт
+                        li
+                          a(href='#', data-bind='click: choosingDeuterium') Дейтерий обогащенный
+                        li
+                          a(href='#', data-bind='click: choosingNeutrino') Нейтрино
+
+                  div.form-group
+                    label.control-label.col-md-4 Количество:
+                    div.input-group.col-md-8
+                      input.form-control(type='text', placeholder='1')
+                      span.input-group-addon шт
+
+              div.col-md-4 Превью
+
+    div.col-md-1 2
+    div.col-md-4
+      div.panel.panel-default
+        div.panel-heading.text-center Корзина
+        div.panel-body ...
+
+
+
+
+
+
+
+
+
+
