@@ -1,32 +1,20 @@
-// This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
+var hay = "1";
 function AppViewModel() {
-    this.productName = ko.observable("Выберите товар ... ");
-    this.choosingDarkmatter = function() {
-        console.log(1)
-        var currentVal = this.productName();        // Read the current value
-        this.productName("Тёмная материя "); // Write back a modified value
-    };
-    this.choosingSingularity = function() {
-        console.log(1)
-        var currentVal = this.productName();        // Read the current value
-        this.productName("Сингулярность концентрированная "); // Write back a modified value
-    };
-    this.choosingExtract = function() {
-        console.log(1)
-        var currentVal = this.productName();        // Read the current value
-        this.productName("Базоновый экстракт "); // Write back a modified value
-    };
-    this.choosingDeuterium = function() {
-        console.log(1)
-        var currentVal = this.productName();        // Read the current value
-        this.productName("Дейтерий обогощный "); // Write back a modified value
-    };
-    this.choosingNeutrino = function() {
-        console.log(1)
-        var currentVal = this.productName();        // Read the current value
-        this.productName("Нейтрино "); // Write back a modified value
-    };
 
+    this.productList= ['Тёмная материя', 'Сингулярность концентрированная', 'Базоновый экстракт',
+    'Дейтерий обогащенный', 'Нейтрино'];
+
+    this.selectedProduct= ko.observable();
+
+    this.fullName = ko.computed(function() {
+        return this.selectedProduct() + "123";
+    }, this);
+
+    this.unitOfMeasure = "кг";
+
+    this.choosingProduct = function () {
+        console.log(this.selectedProduct())
+    }
 }
 
 // Activates knockout.js

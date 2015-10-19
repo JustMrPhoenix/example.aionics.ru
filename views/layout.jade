@@ -5,14 +5,15 @@ html
     title= 'JetStyleExamplePage'
     link(href='css/customstylesheet.css', rel='stylesheet')
     link(href='css/bootstrap.css', rel='stylesheet')
+    link(href='css/adress.css', rel='stylesheet')
     //link(href='css/bootstrap.min.css', rel='stylesheet')
   body
     div.container.pu
       block content
 
-  footer.footer
-    div.footer-container.text-muted.text-center
-      p &copy Physics
+    footer.footer(style='display: none;')
+      div.container.text-muted.text-center
+        p &copy Physics
 
 
   block js
