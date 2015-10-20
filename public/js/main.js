@@ -13,6 +13,8 @@ function AppViewModel() {
     this.productCost = ko.observable(0);
     this.productCostShow = ko.observable("0 р");
     this.productAmount = ko.observable(1);
+    this.productAmountIsSelected = ko.observable(false);
+    this.alertText = ko.observable("Неизвестная ошибка");
 
     this.productSum = ko.computed(function () {
         return this.productCost() * this.productAmount() + " р";
@@ -26,6 +28,7 @@ function AppViewModel() {
         $(".alert").addClass("hidden").show();
         $(".alert").removeClass("block").show();
     }
+
     this.choosingProduct = function () {
 
         if(this.selectedProduct() == this.productList[0]){
@@ -63,16 +66,22 @@ function AppViewModel() {
             this.productCostShow(this.productCost() + " р");
         }
     };
+
+    this.productAmountlostSel = function() {
+        if (!isNaN(this.productAmount())){
+            console.log("yes")
+        }else{
+            console.log("no");
+            this.alertText("Неверно указано количество")
+            this.initAlert();
+            this.productAmount(1)
+        }
+    };
 }
 
 // Activates knockout.js
 ko.applyBindings(new AppViewModel());
 
 /*
- if (!isNaN(this.productAmount())){
- console.log("yes")
- }else{
- console.log("no");
- console.log(this.productAmount());
- }
+
  */

@@ -71,7 +71,7 @@ block content
 										label.control-label.col-md-4 Количество:
 										div.col-md-8
 											div.input-group.small-input
-												input.form-control(type='text', data-bind='value: productAmount',)
+												input.form-control(type='text', data-bind='value: productAmount, hasFocus: productAmountIsSelected, event: {blur: productAmountlostSel}')
 												span.input-group-addon(data-bind='text: unitOfMeasure') гр
 
 								form.form-inline
@@ -85,7 +85,7 @@ block content
 								div.alert.alert-danger.low-alert.hidden
 									span.glyphicon.glyphicon-exclamation-sign(aria-hidden='true')
 									span.sr-only Error
-									span Ошибочка
+									span(data-bind='text: alertText')
 									button.btn.text-right.close(data-bind='click: closeAlert')
 										span.glyphicon.glyphicon-remove
 
@@ -115,7 +115,7 @@ block content
 
 							div.col-sm-4 Превью
 								button.btn.btn-default.offer-button(type='button', data-bind='click: initAlert') В корзину!
-								label.label-success(style='width: 100% !important', data-bind='text: selectedProduct') 123
+								label.label-success(style='width: 100% !important', data-bind='text: productAmountIsSelected') 123
 
 		div.col-md-1 2
 
