@@ -65,13 +65,13 @@ block content
 									div.form-group
 										label.control-label.col-md-4 Продукт:
 										div.col-md-8
-											select.form-control(data-bind="options: productList, optionsCaption: 'Выберите продукт ... ', value: selectedProduct, click: choosingProduct")
+											select.form-control(data-bind="options: productList, value: selectedProduct, click: choosingProduct")
 
 									div.form-group
 										label.control-label.col-md-4 Количество:
 										div.col-md-8
 											div.input-group.small-input
-												input.form-control(type='text', data-bind='value: productAmount, hasFocus: productAmountIsSelected, event: {blur: productAmountlostSel}')
+												input.form-control(type='text', maxlength="7", data-bind='value: productAmount, hasFocus: productAmountIsSelected, event: {blur: productAmountlostSel}')
 												span.input-group-addon(data-bind='text: unitOfMeasure') гр
 
 								form.form-inline
@@ -94,26 +94,32 @@ block content
 								label.control-label Укажите адрес доставки:
 								div.row.adress-margin
 									div.col-xs-8
-										input.form-control(type='text', id='country', placeholder='Страна')
+										input.form-control(type='text', maxlength="25", placeholder='Страна', data-bind="value: adressCountry")
 									div.col-xs-4
-										input.form-control(type='text', id='index', placeholder='Индекс')
+										input.form-control(type='text', maxlength="6", placeholder='Индекс', data-bind="value: adressIndex")
 
 								div.row.adress-margin
 									div.col-xs-6
-										input.form-control(type='text', id='country', placeholder='Регион')
+										input.form-control(type='text', maxlength="15", placeholder='Регион', data-bind="value: adressRegion")
 									div.col-xs-6
-										input.form-control(type='text', id='index', placeholder='Населенный пункт')
+										input.form-control(type='text',, maxlength="15", placeholder='Населенный пункт', data-bind="value: adressCity")
 
 								div.row.adress-margin
 									div.col-xs-8
-										input.form-control(type='text', id='country', placeholder='Улица')
+										input.form-control(type='text', maxlength="15", placeholder='Улица', data-bind="value: adressStreet")
 									div.col-xs-2(style='padding-right: 0px !important;')
-										input.form-control.text-center(type='text', id='index', placeholder='Дом')
+										input.form-control.text-center(type='text', maxlength="3", placeholder='Дом', data-bind="value: adressHouse")
 									div.col-xs-2(style='padding-left: 0px !important;')
-										input.form-control.text-center(type='text', id='index', placeholder='кв')
+										input.form-control.text-center(type='text', maxlength="3", placeholder='кв', data-bind="value: adressApartment")
 
 
-							div.col-sm-4 Превью
+							div.col-sm-4
+								label(data-bind="text: chosenProduct")
+								label
+									label Стоимость:
+									label(data-bind="text: productSum")
+								label Адресс доставки:
+								label(data-bind='text: adress')
 								button.btn.btn-default.offer-button(type='button', data-bind='click: initAlert') В корзину!
 								label.label-success(style='width: 100% !important', data-bind='text: productAmountIsSelected') 123
 
