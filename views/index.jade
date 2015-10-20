@@ -80,7 +80,7 @@ block content
 										strong.inline(data-bind='text: productCostShow')
 									div.form-group
 										label.control-label.margin-right-10 Стоимость:
-										strong.inline(data-bind='text: productSum')
+										strong.inline(data-bind='text: productSumShow')
 
 								div.alert.alert-danger.low-alert.hidden
 									span.glyphicon.glyphicon-exclamation-sign(aria-hidden='true')
@@ -117,10 +117,10 @@ block content
 								label(data-bind="text: chosenProduct")
 								label
 									label Стоимость:
-									label(data-bind="text: productSum")
+									label(data-bind="text: productSumShow")
 								label Адрес доставки:
 								label(data-bind='text: adress')
-								button.btn.btn-default.offer-button(type='button', data-bind='click: initAlert') В корзину!
+								button.btn.btn-default.offer-button(type='button', data-bind='click: addToCart') В корзину!
 								label.label-success(style='width: 100% !important', data-bind='text: productAmountIsSelected') 123
 
 		div.col-md-1 2
@@ -128,7 +128,44 @@ block content
 		div.col-md-4
 			div.panel.panel-default
 				div.panel-heading.text-center Корзина
-				div.panel-body ...
+
+					input(type='button', value='remove', data-bind='click: deleting')
+					table
+						thead
+						tbody(data-bind='foreach: cartArray')
+							tr
+								td
+									span(data-bind='text: selectedProduct')
+								td
+									span(data-bind='text: amount')
+								td
+									span(data-bind='text: sumShow')
+
+
+
+
+
+
+					//div.panel.panel-default
+						div.panel-body.cart-panel
+							//input(type='button', value='remove', data-bind='click: deleting')
+							button.btn.text-right.close(value='remove', data-bind='click: $parent.removeFromCart')
+								span.glyphicon.glyphicon-remove
+							strong( data-bind='text: selectedProduct')
+							br
+							strong Кол-во:
+							span(data-bind='text: amount')
+							br
+							strong Стоимость:
+							span(data-bind='text: sumShow')
+							br
+							strong Адрес доставки:
+							br
+							span(data-bind='text: adress')
+							span(data-bind='text: sumShow')
+
+
+
 
 
 

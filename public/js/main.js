@@ -1,21 +1,12 @@
 function AppViewModel() {
 
-    this.productList= ['Тёмная материя', 'Сингулярность концентрированная', 'Базоновый экстракт',
-    'Дейтерий обогащенный', 'Нейтрино'];
-
-    this.selectedProduct= ko.observable("");
-
-    this.fullName = ko.computed(function() {
-        return this.selectedProduct() + "123";
-    }, this);
-
     this.unitOfMeasure = ko.observable("гр");
     this.productCost = ko.observable(690);
     this.productCostShow = ko.observable("690 р");
-    this.productAmount = ko.observable(1);
+    this.selectedProduct= ko.observable("");
     this.productAmountIsSelected = ko.observable(false);
     this.alertText = ko.observable("Неизвестная ошибка");
-
+    this.productAmount = ko.observable(1);
     this.adressCountry = ko.observable("");
     this.adressIndex = ko.observable("");
     this.adressRegion = ko.observable("");
@@ -25,8 +16,23 @@ function AppViewModel() {
     this.adressApartment = ko.observable("");
 
 
-    this.productSum = ko.computed(function () {
+    this.cartArray = ko.observableArray();
+
+    this.productList= ['Тёмная материя', 'Сингулярность концентрированная', 'Базоновый экстракт',
+    'Дейтерий обогащенный', 'Нейтрино'];
+
+
+
+    this.fullName = ko.computed(function() {
+        return this.selectedProduct() + "123";
+    }, this);
+
+    this.productSumShow = ko.computed(function () {
         return this.productCost() * this.productAmount() + " р";
+    }, this);
+
+    this.productSum = ko.computed(function () {
+        return this.productCost() * this.productAmount();
     }, this);
 
     this.initAlert = function () {
@@ -110,6 +116,28 @@ function AppViewModel() {
 
         return tempIndex + tempCountry + tempRegion + tempCity + tempStreet + tempHouse + tempApartment;
     }, this);
+
+    this.addToCart = function() {
+        var tempSumShow = this.productSumShow();
+        var tempSum = this.productSum();
+        this.cartArray.push(
+            {
+                selectedProduct: this.selectedProduct(),
+                amount: this.productAmount()+" "+this.unitOfMeasure(),
+                sumShow: tempSumShow,
+                sum: tempSum,
+                adress: this.adress()
+            }
+        );
+    };
+
+
+    this.deleting = function() {
+        this.cartArray.splice(0,1);
+    };
+    this.deleting2 = ko.observable(function() {
+        this.cartArray.splice(0,1);
+    });
 
 }
 
