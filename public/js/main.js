@@ -11,7 +11,7 @@ function AppViewModel() {
 
     this.unitOfMeasure = ko.observable("гр");
     this.productCost = ko.observable(690);
-    this.productCostShow = ko.observable("0 р");
+    this.productCostShow = ko.observable("690 р");
     this.productAmount = ko.observable(1);
     this.productAmountIsSelected = ko.observable(false);
     this.alertText = ko.observable("Неизвестная ошибка");
@@ -77,7 +77,7 @@ function AppViewModel() {
     };
 
     this.productAmountlostSel = function() {
-        if (!isNaN(this.productAmount())){
+        if (!isNaN(this.productAmount()) && this.productAmount()) {
             console.log("yes")
         }else{
             console.log("no");
