@@ -69,4 +69,10 @@
     width: 100% !important;
     margin-top: 50px !important;
 }
-
+.low-alert{
+    padding: 10px !important;
+    margin-top: 10px !important;
+}
+.block {
+    display: block !important;
+}

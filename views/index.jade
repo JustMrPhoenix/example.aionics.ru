@@ -71,16 +71,23 @@ block content
 										label.control-label.col-md-4 Количество:
 										div.col-md-8
 											div.input-group.small-input
-												input.form-control(type='text', placeholder='1')
-												span.input-group-addon(data-bind='text: unitOfMeasure') шт
+												input.form-control(type='text', data-bind='value: productAmount',)
+												span.input-group-addon(data-bind='text: unitOfMeasure') гр
 
 								form.form-inline
 									div.form-group.margin-right-50
 										label.control-label.margin-right-10 Цена:
-										strong.inline 123
+										strong.inline(data-bind='text: productCostShow')
 									div.form-group
 										label.control-label.margin-right-10 Стоимость:
-										strong.inline 246
+										strong.inline(data-bind='text: productSum')
+
+								div.alert.alert-danger.low-alert.hidden
+									span.glyphicon.glyphicon-exclamation-sign(aria-hidden='true')
+									span.sr-only Error
+									span Ошибочка
+									button.btn.text-right.close(data-bind='click: closeAlert')
+										span.glyphicon.glyphicon-remove
 
 								hr
 
@@ -107,8 +114,8 @@ block content
 
 
 							div.col-sm-4 Превью
-								button.btn.btn-default.offer-button(type='button') Оформить заказ
-								label.label-success(style='width: 100% !important', data-bind='text: fullName') 123
+								button.btn.btn-default.offer-button(type='button', data-bind='click: initAlert') В корзину!
+								label.label-success(style='width: 100% !important', data-bind='text: selectedProduct') 123
 
 		div.col-md-1 2
 
@@ -116,10 +123,6 @@ block content
 			div.panel.panel-default
 				div.panel-heading.text-center Корзина
 				div.panel-body ...
-
-
-
-
 
 
 
