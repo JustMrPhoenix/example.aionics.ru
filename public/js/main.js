@@ -10,7 +10,7 @@ function AppViewModel() {
     }, this);
 
     this.unitOfMeasure = ko.observable("гр");
-    this.productCost = ko.observable(0);
+    this.productCost = ko.observable(690);
     this.productCostShow = ko.observable("0 р");
     this.productAmount = ko.observable(1);
     this.productAmountIsSelected = ko.observable(false);
